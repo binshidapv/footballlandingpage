@@ -12,7 +12,7 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
         exit;
     }
 
-    $to = 'info.fcsfa@gmail.com';
+    $to = 'binshida.pv@gmail.com';
     $emailSubject = 'FC Strikers Contact Form: ' . $subject;
     $emailBody = "Name: $name\n";
     $emailBody .= "Email: $email\n";
