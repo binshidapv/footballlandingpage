@@ -6,20 +6,26 @@ if ($_SERVER['REQUEST_METHOD'] === 'POST') {
     $subject = trim($_POST['subject'] ?? 'New contact form message');
     $message = trim($_POST['message'] ?? '');
 
-    if ($name === '' || $email === '' || $message === '') {
+    if ($name === '' || $email === '' || $message === '' || !filter_var($email, FILTER_VALIDATE_EMAIL)) {
         http_response_code(400);
-        echo 'Please fill in the required fields.';
+        echo 'Please fill in the required fields and enter a valid email address.';
         exit;
     }
 
-    $to = 'info.fcsfa@gmail.com';
+    // Prevent submitted values from injecting additional mail headers.
+    $name = str_replace(["\r", "\n"], ' ', $name);
+    $email = str_replace(["\r", "\n"], '', $email);
+    $subject = str_replace(["\r", "\n"], ' ', $subject);
+
+    $to = 'binshida.pv@gmail.com';
     $emailSubject = 'FC Strikers Contact Form: ' . $subject;
     $emailBody = "Name: $name\n";
     $emailBody .= "Email: $email\n";
     $emailBody .= "Phone: $phone\n\n";
     $emailBody .= "Message:\n$message\n";
-    $headers = "From: $email\r\n";
+    $headers = "From: FC Strikers Website <info.fcsfa@gmail.com>\r\n";
     $headers .= "Reply-To: $email\r\n";
+    $headers .= "Content-Type: text/plain; charset=UTF-8\r\n";
     $headers .= "X-Mailer: PHP/" . phpversion();
 
     $sent = mail($to, $emailSubject, $emailBody, $headers);

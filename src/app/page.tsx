@@ -1,9 +1,9 @@
 "use client";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { site } from "@/data/site";
 import Image from "next/image";
-import CardNav from "@/components/layout/CardNav";
-import { ShieldCheck, Trophy, MapPinned, Users } from "lucide-react";
+import { ChevronLeft, ChevronRight, MapPinned, Quote, ShieldCheck, Star, Trophy, Users } from "lucide-react";
+import { AnimatePresence, motion } from "framer-motion";
 import GallerySlider from "@/components/sections/GallerySlider";
 import TextType from "@/components/ui/TextType";
 
@@ -12,6 +12,25 @@ import TextType from "@/components/ui/TextType";
 
 export default function HomePage() {
   const [isVideoOpen, setIsVideoOpen] = useState(false);
+  const [activeCoach, setActiveCoach] = useState(0);
+
+  useEffect(() => {
+    const timer = window.setInterval(() => {
+      setActiveCoach((current) => (current + 1) % site.coaches.length);
+    }, 4000);
+
+    return () => window.clearInterval(timer);
+  }, []);
+
+  const showPreviousCoach = () => {
+    setActiveCoach((current) =>
+      current === 0 ? site.coaches.length - 1 : current - 1,
+    );
+  };
+
+  const showNextCoach = () => {
+    setActiveCoach((current) => (current + 1) % site.coaches.length);
+  };
 
 
 
@@ -28,6 +47,7 @@ export default function HomePage() {
       
       alt="FC Strikers Football Academy"
       fill
+      sizes="100vw"
       priority
       className="object-cover"
     />
@@ -60,6 +80,7 @@ export default function HomePage() {
     src="/images/boy.png"
     alt="FC Strikers young football player"
     fill
+    sizes="(min-width: 1024px) 340px, (min-width: 768px) 300px, 220px"
     priority
     className="object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.75)]"
   />
@@ -171,6 +192,7 @@ export default function HomePage() {
               src="/images/aboutus.jpg"
               alt="FC Strikers player illustration"
               fill
+              sizes="(min-width: 1024px) 50vw, 100vw"
               className="object-contain"
             />
           </div>
@@ -428,12 +450,67 @@ export default function HomePage() {
     <div className="overflow-hidden rounded-[36px] bg-white shadow-2xl">
       <div className="grid items-center lg:grid-cols-[0.95fr_1.05fr]">
         <div className="relative h-[520px] bg-[#07152f]">
-          <Image
-            src="/images/coach.jpg"
-            alt="FC Strikers Coach"
-            fill
-            className="object-cover"
-          />
+          <AnimatePresence initial={false} mode="popLayout">
+            <motion.div
+              key={site.coaches[activeCoach].image}
+              initial={{ x: "100%", opacity: 0 }}
+              animate={{ x: 0, opacity: 1 }}
+              exit={{ x: "-100%", opacity: 0 }}
+              transition={{ duration: 0.65, ease: [0.22, 1, 0.36, 1] }}
+              className="absolute inset-0"
+            >
+              <Image
+                src={site.coaches[activeCoach].image}
+                alt={site.coaches[activeCoach].name}
+                fill
+                sizes="(min-width: 1024px) 48vw, 100vw"
+                className="object-cover object-[center_25%]"
+              />
+              <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/10 to-transparent" />
+              <div className="absolute bottom-8 left-8 right-8">
+                <p className="font-[var(--font-bebas)] text-4xl leading-none text-white md:text-5xl">
+                  {site.coaches[activeCoach].name}
+                </p>
+                <a
+                  href={site.coaches[activeCoach].href}
+                  className="mt-3 inline-flex items-center gap-2 text-xs font-black uppercase tracking-[0.2em] text-[#67f55b] transition hover:text-white"
+                >
+                  More About <span aria-hidden="true">→</span>
+                </a>
+              </div>
+            </motion.div>
+          </AnimatePresence>
+
+          <button
+            type="button"
+            onClick={showPreviousCoach}
+            aria-label="Show previous coach"
+            className="absolute left-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white backdrop-blur transition hover:bg-[#67f55b] hover:text-[#07152f]"
+          >
+            <ChevronLeft size={20} />
+          </button>
+          <button
+            type="button"
+            onClick={showNextCoach}
+            aria-label="Show next coach"
+            className="absolute right-4 top-1/2 z-10 flex h-10 w-10 -translate-y-1/2 items-center justify-center rounded-full border border-white/20 bg-black/40 text-white backdrop-blur transition hover:bg-[#67f55b] hover:text-[#07152f]"
+          >
+            <ChevronRight size={20} />
+          </button>
+
+          <div className="absolute bottom-4 right-5 z-10 flex gap-1.5">
+            {site.coaches.map((coach, index) => (
+              <button
+                key={coach.image}
+                type="button"
+                onClick={() => setActiveCoach(index)}
+                aria-label={`Show ${coach.name}`}
+                className={`h-1.5 rounded-full transition-all ${
+                  index === activeCoach ? "w-7 bg-[#67f55b]" : "w-1.5 bg-white/50"
+                }`}
+              />
+            ))}
+          </div>
         </div>
 
         <div className="p-8 md:p-12 lg:p-16">
@@ -476,6 +553,82 @@ export default function HomePage() {
         </div>
       </div>
     </div>
+  </div>
+</section>
+
+{/* parent testimonials */}
+<section className="relative overflow-hidden bg-white px-4 py-24 text-[#07152f]">
+  <div className="absolute -left-24 top-20 h-72 w-72 rounded-full bg-[#67f55b]/10 blur-3xl" />
+  <div className="absolute -right-24 bottom-0 h-80 w-80 rounded-full bg-[#02378D]/10 blur-3xl" />
+
+  <div className="container-custom relative z-10">
+    <div className="mx-auto mb-14 max-w-3xl text-center">
+      <p className="text-xs font-black uppercase tracking-[0.35em] text-[#02378D]">
+        Parent Stories
+      </p>
+      <h2 className="mt-4 font-[var(--font-bebas)] text-5xl leading-none md:text-7xl">
+        Trusted By Parents
+        <span className="block text-[#67f55b]">Loved By Players</span>
+      </h2>
+      <p className="mx-auto mt-5 max-w-2xl text-base leading-7 text-gray-600">
+        Families share how FC Strikers helps young players grow in skill,
+        confidence, discipline, and love for football.
+      </p>
+    </div>
+
+    <div className="flex snap-x snap-mandatory gap-6 overflow-x-auto pb-8 [scrollbar-color:#67f55b_#e5e7eb] [scrollbar-width:thin]">
+      {site.testimonials.map((testimonial, index) => (
+        <article
+          key={testimonial.name}
+          className={`group relative flex min-h-[350px] min-w-[88%] snap-center flex-col overflow-hidden rounded-[30px] border p-7 shadow-[0_20px_60px_rgba(7,21,47,0.08)] transition duration-500 hover:-translate-y-2 hover:shadow-[0_25px_70px_rgba(7,21,47,0.14)] sm:min-w-[70%] md:min-w-[56%] md:p-8 lg:min-w-[42%] ${
+            index === 1
+              ? "border-[#02378D] bg-[#02378D] text-white"
+              : "border-gray-200 bg-[#f8f9fc]"
+          }`}
+        >
+          <div className="flex items-center justify-between">
+            <Quote
+              size={42}
+              className={index === 1 ? "text-[#67f55b]" : "text-[#02378D]"}
+              fill="currentColor"
+              aria-hidden="true"
+            />
+            <div className="flex gap-1 text-[#f6c62f]" aria-label="5 out of 5 stars">
+              {Array.from({ length: 5 }).map((_, star) => (
+                <Star key={star} size={15} fill="currentColor" />
+              ))}
+            </div>
+          </div>
+
+          <blockquote
+            className={`mt-8 flex-1 text-lg font-semibold leading-8 ${
+              index === 1 ? "text-white/90" : "text-gray-700"
+            }`}
+          >
+            “{testimonial.quote}”
+          </blockquote>
+
+          <div
+            className={`mt-8 flex items-center gap-4 border-t pt-6 ${
+              index === 1 ? "border-white/15" : "border-gray-200"
+            }`}
+          >
+            <div className="flex h-12 w-12 items-center justify-center rounded-full bg-[#67f55b] text-sm font-black text-[#07152f]">
+              {testimonial.initials}
+            </div>
+            <div>
+              <p className="font-black">{testimonial.name}</p>
+              <p className={index === 1 ? "text-sm text-white/60" : "text-sm text-gray-500"}>
+                FC Strikers · {testimonial.location}
+              </p>
+            </div>
+          </div>
+        </article>
+      ))}
+    </div>
+    <p className="mt-2 text-center text-xs font-black uppercase tracking-[0.25em] text-[#02378D]/60">
+      Swipe or scroll to explore
+    </p>
   </div>
 </section>
 

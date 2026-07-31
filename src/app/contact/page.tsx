@@ -1,8 +1,12 @@
 import { site } from "@/data/site";
-import { Mail, MapPinned, Phone } from "lucide-react";
+import { Mail, MapPinned } from "lucide-react";
 
-export default function ContactPage() {
-  const success = typeof window !== "undefined" ? new URLSearchParams(window.location.search).get("success") : null;
+export default async function ContactPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ success?: string }>;
+}) {
+  const { success } = await searchParams;
 
   return (
     <main className="bg-white px-4 pb-20 pt-40">
@@ -22,24 +26,16 @@ export default function ContactPage() {
           </p>
         </div>
 
-        <div className="grid gap-6 md:grid-cols-3">
+        <div className="grid gap-6 md:grid-cols-2">
           <div className="rounded-3xl border border-gray-200 bg-[#f6f7fb] p-8 text-center shadow-lg">
             <Mail className="mx-auto text-[#67f55b]" size={36} />
             <h3 className="mt-5 text-lg font-black text-[#07152f]">Email</h3>
-            <p className="mt-2 font-bold text-gray-700">{site.contact.email}</p>
-          </div>
-
-          <div className="rounded-3xl border border-gray-200 bg-[#f6f7fb] p-8 text-center shadow-lg">
-            <Phone className="mx-auto text-[#67f55b]" size={36} />
-            <h3 className="mt-5 text-lg font-black text-[#07152f]">Phone</h3>
-
-            <div className="mt-2 space-y-1">
-              {site.contact.phones.map((phone) => (
-                <p key={phone} className="font-bold text-gray-700">
-                  {phone}
-                </p>
-              ))}
-            </div>
+            <a
+              href={`mailto:${site.contact.email}`}
+              className="mt-2 inline-block font-bold text-gray-700 transition hover:text-[#02378D]"
+            >
+              {site.contact.email}
+            </a>
           </div>
 
           <div className="rounded-3xl bg-[#02378D] p-8 text-center text-white shadow-lg">
@@ -91,22 +87,26 @@ export default function ContactPage() {
             >
               <div className="grid gap-4 md:grid-cols-2">
                 <label className="flex flex-col gap-2 text-sm font-semibold text-gray-700">
-                  <span>Full name</span>
+                  <span>Full name *</span>
                   <input
                     type="text"
                     name="name"
                     required
+                    maxLength={100}
+                    autoComplete="name"
                     className="rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none ring-0 transition focus:border-[#67f55b]"
                     placeholder="Your name"
                   />
                 </label>
 
                 <label className="flex flex-col gap-2 text-sm font-semibold text-gray-700">
-                  <span>Email address</span>
+                  <span>Email address *</span>
                   <input
                     type="email"
                     name="email"
                     required
+                    maxLength={254}
+                    autoComplete="email"
                     className="rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none ring-0 transition focus:border-[#67f55b]"
                     placeholder="you@example.com"
                   />
@@ -118,6 +118,8 @@ export default function ContactPage() {
                 <input
                   type="tel"
                   name="phone"
+                  maxLength={30}
+                  autoComplete="tel"
                   className="rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none ring-0 transition focus:border-[#67f55b]"
                   placeholder="05xxxxxxxx"
                 />
@@ -128,16 +130,18 @@ export default function ContactPage() {
                 <input
                   type="text"
                   name="subject"
+                  maxLength={150}
                   className="rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none ring-0 transition focus:border-[#67f55b]"
                   placeholder="Registration or training"
                 />
               </label>
 
               <label className="flex flex-col gap-2 text-sm font-semibold text-gray-700">
-                <span>Message</span>
+                <span>Message *</span>
                 <textarea
                   name="message"
                   required
+                  maxLength={5000}
                   rows={6}
                   className="rounded-2xl border border-gray-200 bg-white px-4 py-3 outline-none ring-0 transition focus:border-[#67f55b]"
                   placeholder="Tell us how we can help you"
@@ -146,7 +150,7 @@ export default function ContactPage() {
 
               <button
                 type="submit"
-                className="inline-flex items-center rounded-full bg-[#67f55b] px-8 py-3 text-sm font-black uppercase tracking-[0.2em] text-white transition hover:scale-[1.02]"
+                className="inline-flex items-center rounded-full bg-[#67f55b] px-8 py-3 text-sm font-black uppercase tracking-[0.2em] text-[#07152f] transition hover:scale-[1.02]"
               >
                 Send Message
               </button>

@@ -1,5 +1,6 @@
 import Image from "next/image";
 import { site } from "@/data/site";
+import { Mail, Phone } from "lucide-react";
 
 export default function Footer() {
   return (
@@ -54,10 +55,29 @@ export default function Footer() {
               Contact
             </h3>
 
-            <div className="mt-5 space-y-3 text-sm leading-7 text-white/60">
-              <p>{site.contact.email}</p>
-              <p>{site.contact.phones?.[0]}</p>
-              <p>Ajman, Sharjah, Dubai, Umm Al Quwain</p>
+            <div className="mt-5 space-y-3 text-sm text-white/60">
+              <a
+                href={`mailto:${site.contact.email}`}
+                className="flex items-center gap-2 transition hover:text-[#67f55b]"
+              >
+                <Mail size={16} aria-hidden="true" />
+                {site.contact.email}
+              </a>
+
+              <div className="space-y-2 pt-1">
+                {site.contact.branches.map((branch) => (
+                  <div key={branch.city}>
+                    <p className="font-bold text-white">{branch.city}</p>
+                    <a
+                      href={`tel:${branch.phone.replace(/\s/g, "")}`}
+                      className="mt-1 flex items-center gap-2 transition hover:text-[#67f55b]"
+                    >
+                      <Phone size={15} aria-hidden="true" />
+                      {branch.phone}
+                    </a>
+                  </div>
+                ))}
+              </div>
             </div>
 
             <a

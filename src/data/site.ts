@@ -9,7 +9,14 @@ export const site = {
 
   contact: {
     email: "info.fcsfa@gmail.com",
-    phones: ["05 6679718", "05 51157746", "05 68071711", "05 51220072"],
+    phones: ["056 6797718", "055 1157746", "056 8071711", "055 1220072"],
+    branches: [
+      { city: "Ajman", phone: "055 1157746" },
+      { city: "Sharjah", phone: "056 6797718" },
+      { city: "Dubai", phone: "055 1220072" },
+      { city: "Abu Dhabi", phone: "055 1220072" },
+      { city: "Umm Al Quwain", phone: "056 8071711" },
+    ],
     whatsapp: "97156679718",
     instagram: "https://instagram.com/info.fcsfa",
     facebook: "",
@@ -101,6 +108,15 @@ export const site = {
     "Player development pathway",
   ],
 
+  coaches: [
+    { name: "Coach 1", image: "/images/coach1.jpg", href: "/about" },
+    { name: "Coach 2", image: "/images/coach2.jpg", href: "/about" },
+    { name: "Coach 3", image: "/images/coach3.jpg", href: "/about" },
+    { name: "Coach 4", image: "/images/coach4.jpg", href: "/about" },
+    { name: "Coach 5", image: "/images/coach5.jpg", href: "/about" },
+    { name: "Coach 6", image: "/images/coach6.jpg", href: "/about" },
+  ],
+
 locations: ["Ajman", "Sharjah", "Dubai", "Umm Al Quwain", "Abu Dhabi"],
 
 
@@ -139,7 +155,50 @@ gallery: [
 ],
 
 
-  testimonials: [],
+  testimonials: [
+    {
+      quote:
+        "The coaches have helped my son become more confident, disciplined, and comfortable on the ball. He looks forward to every training session.",
+      name: "Ahmed's Parent",
+      location: "Ajman",
+      initials: "AP",
+    },
+    {
+      quote:
+        "FC Strikers creates the perfect balance between serious football development and an environment where children genuinely enjoy learning.",
+      name: "Omar's Parent",
+      location: "Sharjah",
+      initials: "OP",
+    },
+    {
+      quote:
+        "We have seen a wonderful improvement in teamwork, fitness, and match confidence. The coaches care about every player's progress.",
+      name: "Zayan's Parent",
+      location: "Umm Al Quwain",
+      initials: "ZP",
+    },
+    {
+      quote:
+        "My daughter feels welcomed, motivated, and supported at every session. Her passing and decision-making have improved so much.",
+      name: "Sara's Parent",
+      location: "Dubai",
+      initials: "SP",
+    },
+    {
+      quote:
+        "The training is organized, energetic, and age appropriate. We appreciate the regular encouragement and attention from the coaches.",
+      name: "Yousef's Parent",
+      location: "Abu Dhabi",
+      initials: "YP",
+    },
+    {
+      quote:
+        "FC Strikers has become a second home for our son. He has made new friends while developing discipline and a stronger football mindset.",
+      name: "Adam's Parent",
+      location: "Ajman",
+      initials: "AP",
+    },
+  ],
 
   faqs: [],
   locations2: [
@@ -149,7 +208,7 @@ gallery: [
     street: "Behind Dana Mall",
     address: "Sheikh Khalifa Bin Zayed St, Ajman",
     country: "United Arab Emirates",
-    phone: "",
+    phone: "05 51157746",
     mapUrl: "https://www.google.com/maps/place/FC+Strikers+Football+Academy/@25.3901479,55.4595181,17z/data=!4m6!3m5!1s0x3e5f5837f8e1c975:0xe6ddb91851685b8f!8m2!3d25.3908264!4d55.4580697!16s%2Fg%2F11f5hpfpfj?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D",
   },
   {
@@ -158,7 +217,7 @@ gallery: [
     street: "The City School International",
     address: "Al Azra, Sharjah",
     country: "United Arab Emirates",
-    phone: "",
+    phone: "05 66797718",
     mapUrl: "https://www.google.com/maps/place/FC+Strikers+Football+Academy+Sharjah/@25.3753703,55.4512953,1205m/data=!3m1!1e3!4m6!3m5!1s0x3e5f590039f2b88b:0x33a13159d680591f!8m2!3d25.3748953!4d55.4520463!16s%2Fg%2F11wxtt9cbr?coh=245187&entry=tts&g_ep=EgoyMDI1MDIxOS4xIPu8ASoJLDEwMjExNDUzSAFQAw%3D%3D",
   },
   {
@@ -167,7 +226,7 @@ gallery: [
     street: "Behind Al Arabi Sports Club",
     address: "Al Raudah, Umm Al Quwain",
     country: "United Arab Emirates",
-    phone: "",
+    phone: "05 68071711",
     mapUrl: "https://www.google.com/maps/place/FC+Strikers+Football+Academy,+Umm+Al+Quwain/@25.5673125,55.5609375,602m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3ef5ff3df2292f11:0xa3e1a89af5afc646!8m2!3d25.5673125!4d55.5609375!16s%2Fg%2F11w4kytzt6?coh=245187&entry=tts&g_ep=EgoyMDI1MDIxOS4xIPu8ASoJLDEwMjExNDUzSAFQAw%3D%3D",
   },
   {
@@ -177,7 +236,7 @@ gallery: [
     address:
       "M4, Goldenticket Travel Bldg, Opp. WaterElectricity Building, Najda Street, Abu Dhabi U.A.E, P.O No. 7294",
     country: "United Arab Emirates",
-    phone: "0503232277, 0556393330, 0553637555",
+    phone: "055 1220072",
     mapUrl: "",
   },
 ],

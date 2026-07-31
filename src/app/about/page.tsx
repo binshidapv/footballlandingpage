@@ -13,6 +13,7 @@ export default function AboutPage() {
           src="/images/hero.png"
           alt="FC Strikers Football Academy"
           fill
+          sizes="100vw"
           priority
           className="object-cover"
         />
@@ -66,6 +67,7 @@ export default function AboutPage() {
         src="/images/about.jpg"
         alt="FC Strikers player"
         fill
+        sizes="(min-width: 1024px) 50vw, 100vw"
         className="object-cover"
       />
 

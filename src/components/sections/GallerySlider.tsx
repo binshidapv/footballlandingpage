@@ -50,6 +50,7 @@ export default function GallerySlider({ items }: { items: GalleryItem[] }) {
                     src={item.src}
                     alt={item.title}
                     fill
+                    sizes="(min-width: 1024px) 42vw, (min-width: 768px) 55vw, 82vw"
                     className="object-cover transition duration-700 group-hover:scale-110"
                   />
 

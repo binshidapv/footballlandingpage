@@ -8,7 +8,7 @@ export default function VisionPage() {
   return (
     <main className="bg-white">
       <section className="relative flex min-h-[70vh] items-center justify-center overflow-hidden px-4 text-white">
-        <Image src="/images/hero.png" alt="FC Strikers Vision" fill priority className="object-cover" />
+        <Image src="/images/hero.png" alt="FC Strikers Vision" fill sizes="100vw" priority className="object-cover" />
         <div className="absolute inset-0 bg-black/65" />
 
         <div className="relative z-10 max-w-5xl text-center">
@@ -51,6 +51,7 @@ export default function VisionPage() {
     src="/images/vision.jpg"
     alt="FC Strikers vision"
     fill
+    sizes="(min-width: 1024px) 50vw, 100vw"
     className="object-cover"
   />
 </div>
