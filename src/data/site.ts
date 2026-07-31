@@ -236,7 +236,7 @@ gallery: [
     address:
       "M4, Goldenticket Travel Bldg, Opp. WaterElectricity Building, Najda Street, Abu Dhabi U.A.E, P.O No. 7294",
     country: "United Arab Emirates",
-    phone: "055 1220072",
+    phone: "0503232277, 0556393330, 0553637555",
     mapUrl: "",
   },
 ],

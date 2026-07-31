@@ -2,7 +2,7 @@
 import { useEffect, useState } from "react";
 import { site } from "@/data/site";
 import Image from "next/image";
-import { ChevronLeft, ChevronRight, MapPinned, Quote, ShieldCheck, Star, Trophy, Users } from "lucide-react";
+import { ChevronLeft, ChevronRight, MapPinned, Phone, Quote, ShieldCheck, Star, Trophy, Users } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
 import GallerySlider from "@/components/sections/GallerySlider";
 import TextType from "@/components/ui/TextType";
@@ -675,7 +675,8 @@ export default function HomePage() {
           </p>
 
           {location.phone && (
-            <p className="mt-4 text-sm font-bold text-[#67f55b]">
+            <p className="mt-4 inline-flex items-center justify-center gap-2 text-sm font-bold text-[#67f55b]">
+              <Phone size={16} aria-hidden="true" />
               {location.phone}
             </p>
           )}
