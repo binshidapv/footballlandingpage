@@ -371,7 +371,7 @@ gallery: [
     street: "Behind Dana Mall",
     address: "Sheikh Khalifa Bin Zayed St, Ajman",
     country: "United Arab Emirates",
-    phone: "05 51157746",
+    phone: "05 68071711",
     mapUrl: "https://www.google.com/maps/place/FC+Strikers+Football+Academy/@25.3901479,55.4595181,17z/data=!4m6!3m5!1s0x3e5f5837f8e1c975:0xe6ddb91851685b8f!8m2!3d25.3908264!4d55.4580697!16s%2Fg%2F11f5hpfpfj?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D",
   },
   {
