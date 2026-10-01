@@ -44,7 +44,7 @@ export default function RootLayout({
           baseColor="rgba(5,5,5,0.72)"
           menuColor="#FFFFFF"
           buttonBgColor="#67f55b"
-          buttonTextColor="#ffffff"
+          buttonTextColor="#000000"
         />
 
         {children}

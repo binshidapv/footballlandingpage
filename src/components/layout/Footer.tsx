@@ -1,6 +1,7 @@
 import Image from "next/image";
 import { site } from "@/data/site";
 import { Mail, Phone } from "lucide-react";
+import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa6";
 
 export default function Footer() {
   return (
@@ -20,6 +21,45 @@ export default function Footer() {
               FC Strikers Football Academy develops young players through
               professional coaching, discipline, teamwork, and match experience.
             </p>
+
+            <div className="mt-6">
+              <p className="text-[10px] font-black uppercase tracking-[0.24em] text-white/45">
+                Follow Us
+              </p>
+              <div className="mt-3 flex items-center gap-3">
+                <a
+                  href={site.contact.instagram}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Follow FC Strikers on Instagram"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition hover:-translate-y-1 hover:border-[#67f55b] hover:bg-[#67f55b] hover:text-[#07152f]"
+                >
+                  <FaInstagram size={19} aria-hidden="true" />
+                </a>
+
+                <a
+                  href={`https://wa.me/${site.contact.whatsapp}`}
+                  target="_blank"
+                  rel="noreferrer"
+                  aria-label="Chat with FC Strikers on WhatsApp"
+                  className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition hover:-translate-y-1 hover:border-[#67f55b] hover:bg-[#67f55b] hover:text-[#07152f]"
+                >
+                  <FaWhatsapp size={19} aria-hidden="true" />
+                </a>
+
+                {site.contact.facebook && (
+                  <a
+                    href={site.contact.facebook}
+                    target="_blank"
+                    rel="noreferrer"
+                    aria-label="Follow FC Strikers on Facebook"
+                    className="flex h-11 w-11 items-center justify-center rounded-full border border-white/15 bg-white/5 text-white transition hover:-translate-y-1 hover:border-[#67f55b] hover:bg-[#67f55b] hover:text-[#07152f]"
+                  >
+                    <FaFacebookF size={17} aria-hidden="true" />
+                  </a>
+                )}
+              </div>
+            </div>
           </div>
 
           <div>
@@ -82,7 +122,7 @@ export default function Footer() {
 
             <a
               href="/register"
-              className="mt-6 inline-flex rounded-xl bg-[#67f55b] px-6 py-3 text-xs font-black uppercase tracking-wider text-white transition hover:scale-105"
+              className="mt-6 inline-flex rounded-xl bg-[#67f55b] px-6 py-3 text-xs font-black uppercase tracking-wider text-black transition hover:scale-105"
             >
               Register Now
             </a>

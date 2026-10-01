@@ -4,6 +4,7 @@ import { site } from "@/data/site";
 import Image from "next/image";
 import { ChevronLeft, ChevronRight, MapPinned, Phone, Quote, ShieldCheck, Star, Trophy, Users } from "lucide-react";
 import { AnimatePresence, motion } from "framer-motion";
+import { FaFacebookF, FaInstagram, FaWhatsapp } from "react-icons/fa6";
 import GallerySlider from "@/components/sections/GallerySlider";
 import TextType from "@/components/ui/TextType";
 
@@ -56,11 +57,11 @@ export default function HomePage() {
   </div>
 
  <div className="container-custom relative z-10 flex min-h-screen items-center justify-center pb-32 pt-36 text-center">
-  <div className="max-w-7xl">
+  <div className="w-full max-w-7xl">
     <span className="inline-flex rounded-full border border-[#67f55b]/40 bg-black/30 px-8 py-3 text-xs font-black uppercase tracking-[0.45em] text-[#67f55b] backdrop-blur-md">
       Welcome To FC STRIKERS FOOTBALL ACADEMY
     </span>
- <h1 className="mt-8 font-[var(--font-bebas)] text-[26px] leading-none tracking-tight text-white md:text-[38px] lg:text-[54px] xl:text-[64px]">
+ <h1 className="mt-8 flex h-[52px] items-start justify-center font-[var(--font-bebas)] text-[26px] leading-none tracking-tight text-white md:h-[38px] md:text-[38px] lg:h-[54px] lg:text-[54px] xl:h-[64px] xl:text-[64px]">
   <TextType
     text={[
       "BUILDING TOMORROW'S CHAMPIONS",
@@ -75,14 +76,14 @@ export default function HomePage() {
     cursorClassName="text-[#67f55b]"
   />
 </h1>
-<div className="relative mx-auto mt-6 h-[260px] w-[220px] md:h-[360px] md:w-[300px] lg:h-[420px] lg:w-[340px]">
+<div className="relative mx-auto -mb-5 mt-5 h-[230px] w-[190px] md:-mb-7 md:h-[320px] md:w-[260px] lg:h-[350px] lg:w-[285px]">
   <Image
     src="/images/boy.png"
     alt="FC Strikers young football player"
     fill
-    sizes="(min-width: 1024px) 340px, (min-width: 768px) 300px, 220px"
+    sizes="(min-width: 1024px) 285px, (min-width: 768px) 260px, 190px"
     priority
-    className="object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.75)]"
+    className="translate-y-3 object-contain drop-shadow-[0_25px_45px_rgba(0,0,0,0.75)] md:translate-y-4"
   />
   
 </div>
@@ -91,15 +92,44 @@ export default function HomePage() {
  <div className="mx-auto mt-0 h-px max-w-4xl bg-gradient-to-r from-transparent via-[#67f55b] to-transparent" /> 
    
 
+    <div className="relative">
     <div className="mt-5 flex items-center justify-center gap-4">
       <span className="h-px w-20 bg-[#67f55b]/60" />
       <p className="text-lg italic text-[#67f55b]">{site.tagline}</p>
       <span className="h-px w-20 bg-[#67f55b]/60" />
     </div>
 
-  
+    <div className="absolute left-1/2 top-full mt-4 flex -translate-x-1/2 items-center justify-center gap-2">
+      {[
+        { label: "Instagram", href: site.contact.instagram, icon: FaInstagram },
+        { label: "Facebook", href: site.contact.facebook, icon: FaFacebookF },
+        {
+          label: "WhatsApp",
+          href: `https://wa.me/${site.contact.whatsapp}`,
+          icon: FaWhatsapp,
+        },
+      ].map((social) => {
+        const SocialIcon = social.icon;
+
+        return (
+          <a
+            key={social.label}
+            href={social.href}
+            target="_blank"
+            rel="noreferrer"
+            aria-label={`FC Strikers on ${social.label}`}
+            className="flex h-10 w-10 items-center justify-center rounded-full border border-white/20 bg-black/35 text-white shadow-lg backdrop-blur-md transition hover:-translate-y-1 hover:border-[#67f55b] hover:bg-[#67f55b] hover:text-[#07152f]"
+          >
+            <SocialIcon size={17} aria-hidden="true" />
+          </a>
+        );
+      })}
+    </div>
+    </div>
+
   </div>
 </div>
+
 <div className="absolute top-[58%] right-20 z-20 hidden max-w-md -translate-y-1/2 rounded-3xl border border-[#67f55b]/20 bg-black/25 p-5 text-left shadow-2xl backdrop-blur-xl lg:block">
   <p className="text-sm font-black uppercase tracking-[0.25em] text-[#67f55b]">
     Ages 4–17
@@ -152,8 +182,6 @@ export default function HomePage() {
     </div>
   ))}
 </div>
-
- 
 
   {/* Bottom values */}
  
@@ -266,7 +294,7 @@ export default function HomePage() {
 
           <a
             href="/about"
-            className="mt-8 inline-flex items-center gap-4 rounded-xl bg-[#67f55b] px-8 py-4 text-sm font-black uppercase tracking-wider text-white transition hover:scale-105"
+            className="mt-8 inline-flex items-center gap-4 rounded-xl bg-[#67f55b] px-8 py-4 text-sm font-black uppercase tracking-wider text-black transition hover:scale-105"
           >
             Learn More
             <span>→</span>
@@ -281,7 +309,7 @@ export default function HomePage() {
 
 
 {/* why Choose us */}
-<section className="bg-[#f6f7fb] px-4 py-24">
+<section id="coaches" className="scroll-mt-24 bg-[#f6f7fb] px-4 py-24">
   <div className="container-custom">
     <div className="overflow-hidden rounded-[36px] bg-[#07152f] p-8 text-white shadow-2xl md:p-12 lg:p-14">
       <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
@@ -302,7 +330,7 @@ export default function HomePage() {
 
           <a
             href="/register"
-            className="mt-8 inline-flex rounded-xl bg-[#67f55b] px-8 py-4 text-sm font-black uppercase tracking-wider text-white transition hover:scale-105"
+            className="mt-8 inline-flex rounded-xl bg-[#67f55b] px-8 py-4 text-sm font-black uppercase tracking-wider text-black transition hover:scale-105"
           >
             Join FC Strikers
           </a>
@@ -378,6 +406,87 @@ export default function HomePage() {
         </div>
       ))}
     </div>
+
+    <div className="mt-12 rounded-[32px] border border-[#02378D]/10 bg-gradient-to-br from-[#f3f7ff] to-white p-5 md:p-7">
+      <div className="mb-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
+        <div className="flex items-center gap-4">
+          <span className="flex h-12 w-12 shrink-0 items-center justify-center rounded-2xl bg-[#02378D] text-[#67f55b] shadow-lg shadow-[#02378D]/20">
+            <Trophy size={22} aria-hidden="true" />
+          </span>
+          <div>
+            <p className="text-[10px] font-black uppercase tracking-[0.28em] text-[#02378D]">
+              Proud Moments
+            </p>
+            <h3 className="mt-1 font-[var(--font-bebas)] text-3xl leading-none text-[#07152f] md:text-4xl">
+              Celebrating Every Win
+            </h3>
+          </div>
+        </div>
+
+        <a
+          href="/gallery"
+          className="inline-flex w-fit items-center rounded-full bg-[#07152f] px-5 py-3 text-[10px] font-black uppercase tracking-[0.16em] text-white transition hover:bg-[#02378D]"
+        >
+          Explore Gallery →
+        </a>
+      </div>
+
+      <div className="grid gap-4 md:grid-cols-2 lg:grid-cols-12">
+        {[
+          {
+            src: "/gallery/32.jpg",
+            title: "Champions Together",
+            label: "Tournament Winners",
+            number: "01",
+            className: "md:col-span-2 lg:col-span-6",
+            imageClassName: "object-contain",
+          },
+          {
+            src: "/gallery/13.jpg",
+            title: "The Winning Moment",
+            label: "Trophy Celebration",
+            number: "02",
+            className: "lg:col-span-3",
+            imageClassName: "object-cover",
+          },
+          {
+            src: "/gallery/2.jpg",
+            title: "Ramadan League 2025",
+            label: "Second Runners-Up",
+            number: "03",
+            className: "lg:col-span-3",
+            imageClassName: "object-cover",
+          },
+        ].map((achievement) => (
+          <article
+            key={achievement.src}
+            className={`group relative h-[240px] overflow-hidden rounded-[24px] bg-[#07152f] shadow-lg ${achievement.className}`}
+          >
+            <Image
+              src={achievement.src}
+              alt={`${achievement.title} at FC Strikers Football Academy`}
+              fill
+              sizes="(min-width: 1024px) 50vw, (min-width: 768px) 50vw, 100vw"
+              className={`${achievement.imageClassName} transition duration-700 group-hover:scale-105`}
+            />
+            <div className="absolute inset-0 bg-gradient-to-t from-[#07152f] via-[#07152f]/5 to-transparent" />
+
+            <span className="absolute right-4 top-4 flex h-9 w-9 items-center justify-center rounded-full border border-white/30 bg-black/25 text-xs font-black text-white backdrop-blur-md">
+              {achievement.number}
+            </span>
+
+            <div className="absolute inset-x-0 bottom-0 p-5 md:p-6">
+              <p className="text-[10px] font-black uppercase tracking-[0.24em] text-[#67f55b]">
+                {achievement.label}
+              </p>
+              <h4 className="mt-1 text-lg font-black text-white md:text-xl">
+                {achievement.title}
+              </h4>
+            </div>
+          </article>
+        ))}
+      </div>
+    </div>
   </div>
 </section>
 {/* Traning Programs */}
@@ -402,7 +511,7 @@ export default function HomePage() {
 
           <a
             href="/programs"
-            className="mt-8 inline-flex rounded-xl bg-[#67f55b] px-7 py-4 text-sm font-black uppercase tracking-wider text-white transition hover:scale-105"
+            className="mt-8 inline-flex rounded-xl bg-[#67f55b] px-7 py-4 text-sm font-black uppercase tracking-wider text-black transition hover:scale-105"
           >
             View Programs →
           </a>
@@ -546,7 +655,7 @@ export default function HomePage() {
 
           <a
   href="/register"
-  className="mt-10 inline-flex rounded-xl bg-[#67f55b] px-8 py-4 text-sm font-black uppercase tracking-wider text-white transition hover:scale-105"
+  className="mt-10 inline-flex rounded-xl bg-[#67f55b] px-8 py-4 text-sm font-black uppercase tracking-wider text-black transition hover:scale-105"
 >
   Train With Us
 </a>
