@@ -1,5 +1,6 @@
 import type { Metadata } from "next";
 import { Bebas_Neue, Inter } from "next/font/google";
+import localFont from "next/font/local";
 import Footer from "@/components/layout/Footer";
 import BackToTop from "@/components/layout/BackToTop";
 import Loader from "@/components/layout/Loader";
@@ -19,6 +20,11 @@ const inter = Inter({
   variable: "--font-inter",
 });
 
+const bernard = localFont({
+  src: "../../public/fonts/BERNHC.ttf",
+  variable: "--font-bernard",
+});
+
 export const metadata: Metadata = {
   title: "FC Strikers Football Academy",
   description: "Modern football academy for young players across the UAE.",
@@ -33,7 +39,7 @@ export default function RootLayout({
     <html lang="en" suppressHydrationWarning>
       <body
         suppressHydrationWarning
-        className={`${bebas.variable} ${inter.variable} antialiased`}
+        className={`${bebas.variable} ${inter.variable} ${bernard.variable} antialiased`}
       >
         <Loader />
 

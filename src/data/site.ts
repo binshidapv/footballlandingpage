@@ -11,11 +11,10 @@ export const site = {
     email: "info.fcsfa@gmail.com",
     phones: ["056 6797718", "055 1157746", "056 8071711", "055 1220072"],
     branches: [
-      { city: "Ajman", phone: "056 8071711" },
-      { city: "Sharjah", phone: "056 6797718" },
-      { city: "Dubai", phone: "055 1220072" },
-      { city: "Abu Dhabi", phone: "055 1220072" },
-      { city: "Umm Al Quwain", phone: "056 8071711" },
+      { city: "Ajman,Sharjah & Um Al Quwain", phone: "055 115 7746,0566797718" },
+     
+      { city: " Abudhabi & Dubai", phone: "055 6393336,0503232277" },
+      
     ],
     whatsapp: "971551157746",
     instagram: "https://www.instagram.com/info.fcsfa",
@@ -371,7 +370,7 @@ gallery: [
     street: "Behind Dana Mall",
     address: "Sheikh Khalifa Bin Zayed St, Ajman",
     country: "United Arab Emirates",
-    phone: "05 68071711",
+    phone: "05 51157746",
     mapUrl: "https://www.google.com/maps/place/FC+Strikers+Football+Academy/@25.3901479,55.4595181,17z/data=!4m6!3m5!1s0x3e5f5837f8e1c975:0xe6ddb91851685b8f!8m2!3d25.3908264!4d55.4580697!16s%2Fg%2F11f5hpfpfj?entry=ttu&g_ep=EgoyMDI2MDYyOS4wIKXMDSoASAFQAw%3D%3D",
   },
   {
@@ -389,7 +388,7 @@ gallery: [
     street: "Behind Al Arabi Sports Club",
     address: "Al Raudah, Umm Al Quwain",
     country: "United Arab Emirates",
-    phone: "05 68071711",
+    phone: "05 51157746",
     mapUrl: "https://www.google.com/maps/place/FC+Strikers+Football+Academy,+Umm+Al+Quwain/@25.5673125,55.5609375,602m/data=!3m2!1e3!4b1!4m6!3m5!1s0x3ef5ff3df2292f11:0xa3e1a89af5afc646!8m2!3d25.5673125!4d55.5609375!16s%2Fg%2F11w4kytzt6?coh=245187&entry=tts&g_ep=EgoyMDI1MDIxOS4xIPu8ASoJLDEwMjExNDUzSAFQAw%3D%3D",
   },
   {

@@ -95,7 +95,7 @@ export default function HomePage() {
     <div className="relative">
     <div className="mt-5 flex items-center justify-center gap-4">
       <span className="h-px w-20 bg-[#67f55b]/60" />
-      <p className="text-lg italic text-[#67f55b]">{site.tagline}</p>
+      <p className="text-lg not-italic text-[#67f55b] [font-family:var(--font-bernard)]">{site.tagline}</p>
       <span className="h-px w-20 bg-[#67f55b]/60" />
     </div>
 
@@ -164,7 +164,7 @@ export default function HomePage() {
 <div className="absolute left-10 top-[58%] z-20 hidden -translate-y-1/2 xl:flex">
   {[
     { value: "15+", label: "Years" },
-    { value: "500+", label: "Players" },
+    { value: "5000+", label: "Players" },
     { value: "5+", label: "Locations" },
     { value: "20+", label: "Coaches" },
   ].map((item, index) => (
@@ -207,7 +207,7 @@ export default function HomePage() {
       Football Academy
     </p>
 
-    <h3 className="mt-1 text-3xl font-black uppercase leading-none text-[#02378D]">
+    <h3 className="mt-1 text-3xl font-black uppercase leading-none text-[#02378D] [font-family:var(--font-bernard)]">
       FC STRIKERS
     </h3>
 
@@ -228,7 +228,7 @@ export default function HomePage() {
 
         {/* Right */}
         <div className="lg:pl-6">
-          <p className="text-xs font-black uppercase tracking-[0.3em] text-[#67f55b]">
+          <p className="text-xs font-black uppercase tracking-[0.3em] text-[#67f55b] [font-family:var(--font-bernard)]">
             About FC Strikers
           </p>
 
@@ -314,7 +314,7 @@ export default function HomePage() {
     <div className="overflow-hidden rounded-[36px] bg-[#07152f] p-8 text-white shadow-2xl md:p-12 lg:p-14">
       <div className="grid gap-12 lg:grid-cols-[0.8fr_1.2fr] lg:items-center">
         <div>
-          <p className="text-xs font-black uppercase tracking-[0.35em] text-[#67f55b]">
+          <p className="text-xs font-normal uppercase tracking-[0.35em] text-[#67f55b] [font-family:var(--font-bernard)]">
             Why Choose FC Strikers
           </p>
 
@@ -385,7 +385,7 @@ export default function HomePage() {
 
     <div className="grid gap-5 sm:grid-cols-2 lg:grid-cols-4">
       {[
-        { value: "500+", label: "Players Trained" },
+        { value: "5000+", label: "Players Trained" },
         { value: "20+", label: "Professional Coaches" },
         { value: "15+", label: "Years Experience" },
         { value: "5+", label: "Training Locations" },

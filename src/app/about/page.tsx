@@ -20,7 +20,7 @@ export default function AboutPage() {
         <div className="absolute inset-0 bg-black/65" />
 
         <div className="relative z-10 max-w-5xl text-center">
-          <p className="text-xs font-black uppercase tracking-[0.4em] text-[#67f55b]">
+          <p className="text-xs font-black uppercase tracking-[0.4em] text-[#67f55b] [font-family:var(--font-bernard)]">
             About FC Strikers
           </p>
 

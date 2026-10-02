@@ -20,25 +20,7 @@ export default function ParentsPage() {
         {site.parentsPortal.description}
       </p>
 
-      <div className="mt-8 flex flex-wrap gap-4">
-        <a
-          href={site.parentsPortal.googlePlayUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-xl bg-[#67f55b] px-7 py-4 text-sm font-black uppercase tracking-wider text-black transition hover:scale-105"
-        >
-          Google Play
-        </a>
-
-        <a
-          href={site.parentsPortal.appStoreUrl}
-          target="_blank"
-          rel="noopener noreferrer"
-          className="rounded-xl border border-[#02378D]/20 px-7 py-4 text-sm font-black uppercase tracking-wider text-[#02378D] transition hover:border-[#67f55b]"
-        >
-          App Store
-        </a>
-      </div>
+      
     </div>
 
     <div className="relative h-[520px] overflow-hidden rounded-[36px] bg-[#f6f7fb] p-6 shadow-2xl">

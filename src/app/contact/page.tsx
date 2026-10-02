@@ -53,6 +53,12 @@ export default async function ContactPage({
           </div>
         )}
 
+        {success === "0" && (
+          <div className="mt-8 rounded-2xl border border-red-200 bg-red-50 p-4 text-center text-sm font-semibold text-red-700">
+            Your message could not be sent. Please check the form and try again.
+          </div>
+        )}
+
         <div className="mt-12 rounded-[32px] border border-gray-200 bg-[#f6f7fb] p-6 shadow-xl md:p-8 lg:p-10">
           <div className="grid gap-8 lg:grid-cols-[0.9fr_1.1fr]">
             <div>
@@ -81,10 +87,11 @@ export default async function ContactPage({
             </div>
 
             <form
-              action="/contact-submit.php"
+              action="/api/forms"
               method="post"
               className="space-y-4"
             >
+              <input type="hidden" name="kind" value="contact" />
               <div className="grid gap-4 md:grid-cols-2">
                 <label className="flex flex-col gap-2 text-sm font-semibold text-gray-700">
                   <span>Full name *</span>

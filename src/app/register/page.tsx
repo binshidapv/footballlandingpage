@@ -4,6 +4,7 @@ import { useState } from "react";
 
 export default function RegisterPage() {
   const [errors, setErrors] = useState<Record<string, string>>({});
+  const [status, setStatus] = useState<"idle" | "submitting" | "success" | "error">("idle");
 
   const fields = [
     { label: "Student Name", name: "studentName", type: "text" },
@@ -38,17 +39,27 @@ export default function RegisterPage() {
     return newErrors;
   };
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
 
-    const formData = new FormData(e.currentTarget);
+    const form = e.currentTarget;
+    const formData = new FormData(form);
     const validationErrors = validateForm(formData);
 
     setErrors(validationErrors);
 
     if (Object.keys(validationErrors).length === 0) {
-      alert("Registration submitted successfully.");
-      e.currentTarget.reset();
+      setStatus("submitting");
+      formData.set("kind", "registration");
+
+      try {
+        const response = await fetch("/api/forms", { method: "POST", body: formData });
+        if (!response.ok) throw new Error("Submission failed");
+        form.reset();
+        setStatus("success");
+      } catch {
+        setStatus("error");
+      }
     }
   };
 
@@ -104,10 +115,23 @@ export default function RegisterPage() {
 
             <button
               type="submit"
-              className="md:col-span-2 rounded-xl bg-[#67f55b] px-8 py-4 text-sm font-black uppercase tracking-wider text-black transition hover:scale-[1.02]"
+              disabled={status === "submitting"}
+              className="rounded-xl bg-[#67f55b] px-8 py-4 text-sm font-black uppercase tracking-wider text-black transition hover:scale-[1.02] disabled:cursor-wait disabled:opacity-60 md:col-span-2"
             >
-              Submit Registration
+              {status === "submitting" ? "Sending..." : "Submit Registration"}
             </button>
+
+            {status === "success" && (
+              <p className="rounded-xl bg-green-50 p-4 text-center text-sm font-bold text-green-700 md:col-span-2">
+                Registration sent successfully. Our team will contact you soon.
+              </p>
+            )}
+
+            {status === "error" && (
+              <p className="rounded-xl bg-red-50 p-4 text-center text-sm font-bold text-red-700 md:col-span-2">
+                We could not send the registration. Please try again or contact us on WhatsApp.
+              </p>
+            )}
           </form>
         </div>
       </div>
